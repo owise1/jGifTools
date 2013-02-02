@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="../jGifTools.js"></script>
+		
+		<script type='text/javascript' charset='utf-8'>
+			$(document).ready(function() {
+				/*
+				var max = 50, start = 20;
+				function _t_banks(){
+					if(start > max) start = 20; 
+					$('#tyra').giftools('kscope', {
+						image : 'images/chand.gif',
+						repeat : start++,
+						onfinish : function(){
+							setTimeout(_t_banks, 500);
+						}
+					});
+				}
+				_t_banks();
+				*/
+				var turtles = ['images/turtle-2_anim.gif', 'images/turtle.gif'];
+				
+				$('#tyra').click(function(){
+					$('#tyra')
+						.html('')
+						// .giftools('kscope', {
+						// 							// image : turtles[Math.floor(Math.random()*turtles.length)],
+						// 							image : turtles[0],
+						// 							radius : 330,
+						// 							repeat : 1,
+						// 							offset : 280,
+						// 							animate : {
+						// 								multiply : 20
+						// 							}
+						// 						})
+						// 						.giftools('kscope', {
+						// 							image : 'images/turkey.2_anim.gif',
+						// 							radius : 180,
+						// 							repeat : 25,
+						// 							offset : 270,
+						// 							animate : {
+						// 								multiply : 2,
+						// 								spin : 0
+						// 							}
+						// 						})
+						.giftools('kscope', {
+							image : 'images/chand.gif',
+							repeat : 4,
+							offset : 0,
+							animate : {
+								multiply : 2,
+								spin : 3
+							}
+						});
+					
+				}).click();
+				
+				
+				
+			});
+		</script>
+		<style type="text/css" media="screen">
+			html, body, #tyra {
+			    margin: 0;
+			    padding: 0;
+			    height:100%;
+				width:100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="tyra"></div>
+	</body>
+</html>
