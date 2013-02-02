@@ -208,7 +208,7 @@
   
 	}; // end methods
 
-  $.fn.giftools = function( method ) {
+  $.fn.jGifTools = function( method ) {
 	if ( typeof method === 'object' || ! method ){
 		method = 'repeater';
 	}
@@ -221,7 +221,7 @@
       // return methods.init.apply( this, arguments );
 
     } else {
-      $.error( 'Method ' +  method + ' does not exist on jQuery.giftools' );
+      $.error( 'Method ' +  method + ' does not exist on jQuery.jGifTools' );
     }    
   
   };

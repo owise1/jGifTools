@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-		<script type="text/javascript" src="../jGifTools.js"></script>
+		<script type="text/javascript" src="../../jGifTools.js"></script>
 		
 		<script type='text/javascript' charset='utf-8'>
 			$(document).ready(function() {
@@ -10,7 +10,7 @@
 				var max = 50, start = 20;
 				function _t_banks(){
 					if(start > max) start = 20; 
-					$('#tyra').html('').giftools('kscope', {
+					$('#tyra').html('').jGifTools('kscope', {
 						image : 'images/tyra-2.gif',
 						repeat : start++,
 						onfinish : function(){
@@ -21,7 +21,7 @@
 				_t_banks();
 				*/
 				$('#tyra')
-					.giftools('kscope', {
+					.jGifTools('kscope', {
 						image : 'images/tyra-faces.gif',
 						repeat : 4,
 						radius : 320,
@@ -31,13 +31,13 @@
 							time : 200
 						}
 					})
-					.giftools('kscope', {
+					.jGifTools('kscope', {
 						image : 'images/tyra-zombie-2.gif',
 						repeat : 8,
 						radius : 220,
 						offset : 23
 					})
-					.giftools('kscope', {
+					.jGifTools('kscope', {
 						image : 'images/tyra-2.gif',
 						repeat : 15,
 						animate : {
