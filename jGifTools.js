@@ -2,7 +2,6 @@
   var z_index = 0;
   var methods = {
 	    repeater : function( options ) { 
-	      	// Create some defaults, extending them with any options that were provided
 			    var opts = $.extend( {
 					repeat : 100,
 					offsets : 10
@@ -77,7 +76,7 @@
 					var div = $("<div>").css({
 						width : elem.width || opts.width || $w.width(),
 						height : elem.height || opts.height || $w.height(),
-						background : "url('"+elem.url+"')",
+						background : "url('"+elem.image+"')",
 						position : 'absolute',
 						'background-position' : elem.position || '0 0',
 						top : elem.top || 0,
