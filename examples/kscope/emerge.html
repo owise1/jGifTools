@@ -6,43 +6,7 @@
 		
 		<script type='text/javascript' charset='utf-8'>
 			$(document).ready(function() {
-				/*
-				var max = 50, start = 20;
-				function _t_banks(){
-					if(start > max) start = 20; 
-					$('#tyra').html('').jGifTools('kscope', {
-						image : 'images/tyra-2.gif',
-						repeat : start++,
-						onfinish : function(){
-							setTimeout(_t_banks, 200);
-						}
-					});
-				}
-				_t_banks();
-				*/
 				$('#tyra')
-					.jGifTools('kscope', {
-						image : 'images/tyra-faces.gif',
-						repeat : 1,
-						radius : 390,
-						animate : {
-							multiply : 30,
-							spin : -1,
-							time : 200,
-							emerge : true
-						}
-					})
-					.jGifTools('kscope', {
-						image : 'images/tyra-zombie-2.gif',
-						repeat : 6,
-						radius : 220,
-						offset : 23,
-						animate : {
-							multiply : 6,
-							spin : 3,
-							emerge : true
-						}
-					})
 					.jGifTools('kscope', {
 						image : 'images/tyra-2.gif',
 						repeat : 15,

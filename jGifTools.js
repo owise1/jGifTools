@@ -114,7 +114,8 @@
 					// used for animation
 					current_repeat  = opts.repeat,
 					oringal_repeat  = opts.repeat,
-					multiply_add    = true
+					multiply_add    = true,
+					size_multiplier = 0
 					;
 					
 				z_index += opts.repeat + 5;
@@ -133,11 +134,14 @@
 				
 		
 				function _init(){
-					var center_x = width/2, center_y = height/2, me_z = starting_z;
+					var center_x = width/2, 
+						center_y = height/2, 
+						me_z = starting_z;
+						
 					for(var i=0; i< opts.repeat; i++){
 						var deg = (360 / opts.repeat * (i+1)) + opts.offset;
 						var radians = deg * (Math.PI / 180);
-						if(opts.radius > 0) deg += 90; // if you're creting a circle, you want them facing in
+						if(opts.radius > 0) deg += 90; // if you're creating a circle, you want them facing in
 						
 						// remove me first - for animations
 						var ze_class = 'qt-kscope-' + rand + '-' + i,
@@ -146,19 +150,30 @@
 					 	// get rid of the one above cuz we're going down
 						if(!multiply_add && i+1 == opts.repeat) me_sel += $('div.' + 'qt-kscope-' + rand + '-' + (i+1)).remove();
 						var $me_sel = $(me_sel);
-						if($me_sel[0]){
-							// me_z = $me_sel.css('zIndex');
-							$me_sel.remove();
-						}
+						if($me_sel[0]) $me_sel.remove();
+						
+						var div_w    = img.width,
+							div_h    = img.height,
+							div_top  = center_y - img.height/2 + Math.ceil(Math.sin(radians) * opts.radius),
+							div_left = center_x - img.width/2 + Math.ceil(Math.cos(radians) * opts.radius);
+						
+						// animate "emerge"
+						if(size_multiplier > 0){
+							div_w = size_multiplier * div_w;
+							div_h = size_multiplier * div_h;
+							div_left += img.width * 0.5 - img.width * 0.5 * size_multiplier;
+							div_top += img.height * 0.5 - img.height * 0.5 * size_multiplier;
+						} 
 						
 						var div = $("<div>")
 										.css({
-											width : img.width,
-											height : img.height,
+											width : div_w,
+											height : div_h,
 											background : "url('"+img.src+"')",
+											backgroundSize : '100% 100%',
 											position : 'absolute',
-											top : center_y - img.height/2 + Math.ceil(Math.sin(radians) * opts.radius),
-											left: center_x - img.width/2 + Math.ceil(Math.cos(radians) * opts.radius),
+											top : div_top,
+											left: div_left,
 											zIndex : me_z++,
 											'-webkit-transform': 'rotate('+deg+'deg)',
 											'-moz-transform': 'rotate('+deg+'deg)',
@@ -177,7 +192,8 @@
 						var animate = $.extend({
 							multiply : 2,
 							time : 100,
-							spin : -3
+							spin : -3,
+							emerge : false
 						}, opts.animate);
 						var max_repeats = oringal_repeat * animate.multiply;
 						
@@ -194,6 +210,7 @@
 									current_repeat++;
 								} else current_repeat--;
 								
+								if(animate.emerge) size_multiplier = current_repeat / max_repeats;
 								opts.repeat = current_repeat;
 								opts.offset += animate.spin;
 								_init();
