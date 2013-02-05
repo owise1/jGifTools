@@ -220,8 +220,11 @@
 					}
 				}
 		    });
+		},
+		rainbow : function( options ){
 		}
-  
+	
+		
 	}; // end methods
 
   $.fn.jGifTools = function( method ) {
