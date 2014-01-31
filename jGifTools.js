@@ -1,5 +1,18 @@
 (function( $ ){
   var z_index = 0;
+  var global_opts = {
+	onfinish  : function(){ }
+  };
+
+  function __on_image_load(src, callback){
+	var i = new Image;
+	i.onload = function(){
+		callback.call(i);
+	}
+	i.src = src;
+  }
+
+
   var methods = {
 	    repeater : function( options ) { 
 			    var opts = $.extend( {
@@ -99,9 +112,8 @@
 				repeat : 20,
 				radius : 0,
 				offset : 0,
-				animate : false,
-				onfinish  : function(){ }
-		    }, options);
+				animate : false
+		    }, global_opts, options);
 
 			return this.each(function() {    
 			    var $this          = $(this),
@@ -222,6 +234,59 @@
 		    });
 		},
 		rainbow : function( options ){
+		},
+		geometry : function(options){
+			var opts = $.extend( global_opts, {
+				
+		    }, options);
+
+			return this.each(function() {    
+			    var $this = $(this);
+				
+				
+				
+				__on_image_load(opts.image, function(){
+					var img = this;
+					$this.css({
+						'-webkit-perspective' : img.width*10 + 'px',
+						'position' : 'relative'
+					});
+					
+					qty = 20;
+					$.each((function(){
+						var ret = [];
+						for(var i=0; i < qty;i++) ret.push(i);
+						return ret;
+					})(), function(i, i2){
+						
+						var div = $("<div>").css({
+							'background' : "url('"+opts.image+"')",
+							'width' : img.width,
+							'height' : img.height,
+							'position' : 'absolute'
+						});
+						if(i > 0){
+							div.transform({rotateY: i * 90 + 'deg'});
+						}
+						$this.append(div);
+
+						var spins = 180 + i * (180 / qty), spins_i = 0, back_forth = i % 2 == 0 ? 0 : 1;
+						function _fllip(){
+							div
+								.animate({ 
+									rotateY: spins + 'deg',
+									left:  (back_forth == 0 ? '+' : '-') + '=' + img.width/2
+								}, 3000, _fllip)
+							spins += 180/qty;
+							back_forth = 1 - back_forth;
+						}
+						_fllip();
+						
+					});
+					
+					
+				});
+			});
 		}
 	
 		

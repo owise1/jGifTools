@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="../../jGifTools.js"></script>
+		
+		<script type='text/javascript' charset='utf-8'>
+			$(document).ready(function() {
+				var divs  = []
+					w        = $(window).width(),
+					h        = $(window).height(),
+					start_t  = 1 - 245,
+					start_l  = w,
+					dl       = 15,
+					how_many = 50
+					;
+				
+				
+				for(var i=0;i<how_many;i++){
+					// console.log(start_t);
+					console.log(start_l);
+					divs.push({
+						image : "images/look-left-3.gif",
+						width : 245,
+						height : 245,
+						top : start_t,
+						left : start_l
+					});
+					start_t += dl;
+					start_l -= dl;
+				}
+				$('body').jGifTools('layers', {
+					divs :  divs
+				});
+				
+			});
+		</script>
+		
+	</head>
+	<body>
+		
+	</body>
+</html>
