@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="jGifTools.js"></script>
+		
+		<script type='text/javascript' charset='utf-8'>
+			$(document).ready(function() {
+				/*
+				var max = 50, start = 20;
+				function _t_banks(){
+					if(start > max) start = 20; 
+					$('#tyra').html('').jGifTools('kscope', {
+						image : 'images/tyra-2.gif',
+						repeat : start++,
+						onfinish : function(){
+							setTimeout(_t_banks, 200);
+						}
+					});
+				}
+				_t_banks();
+				*/
+				$('#tyra')
+					.jGifTools('kscope', {
+						image : 'images/tyra-faces.gif',
+						repeat : 1,
+						radius : 390,
+						animate : {
+							multiply : 30,
+							spin : -1,
+							time : 200,
+							emerge : true
+						}
+					})
+					.jGifTools('kscope', {
+						image : 'images/tyra-zombie-2.gif',
+						repeat : 6,
+						radius : 220,
+						offset : 23,
+						animate : {
+							multiply : 6,
+							spin : 3,
+							emerge : true
+						}
+					})
+					.jGifTools('kscope', {
+						image : 'images/tyra-2.gif',
+						repeat : 15,
+						animate : {
+							multiply : 4,
+							spin : 0,
+							emerge : true
+						}
+					});
+				
+			});
+		</script>
+		<style type="text/css" media="screen">
+			html, body, #tyra {
+			    margin: 0;
+			    padding: 0;
+			    height:100%;
+				width:100%;
+				background-color:#000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="tyra"></div>
+	</body>
+</html>
