@@ -2,6 +2,10 @@
 
 A jQuery library for making animated gif collages. *see examples for advanced usage*
 
+## Example 
+
+[Tyra hecka cray-cray](http://owise1.github.io/jGifTools)
+
 ## Methods
 
 ### layers 
