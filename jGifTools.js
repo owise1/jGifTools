@@ -160,7 +160,7 @@
 							me_sel = 'div.' + ze_class							;
 						
 					 	// get rid of the one above cuz we're going down
-						if(!multiply_add && i+1 == opts.repeat) me_sel += $('div.' + 'qt-kscope-' + rand + '-' + (i+1)).remove();
+						if(!multiply_add && i+1 == opts.repeat) $('div.' + 'qt-kscope-' + rand + '-' + (i+1)).remove();
 						var $me_sel = $(me_sel);
 						if($me_sel[0]) $me_sel.remove();
 						
